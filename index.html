@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Снегурочка — Александра Щекатихина-Потоцкая</title>
+
+  <style>
+    :root {
+      --bg: #f3f3f1;
+      --paper: #f8f8f6;
+      --text: #111111;
+      --muted: #6d6d6d;
+      --line: #cfcfc9;
+      --accent: #1a1a1a;
+      --max: 1240px;
+      --content: 760px;
+      --gap: 28px;
+      --section-space: 120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "ITC Avant Garde Gothic", "Avant Garde", "Century Gothic", "Montserrat", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: var(--max);
+      margin: 28px auto;
+      background: var(--paper);
+      min-height: 100vh;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.03);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 248, 246, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 18px;
+    }
+
+    .nav a {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 0;
+      position: relative;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: var(--text);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      padding: 34px;
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--line);
+      margin-bottom: 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-weight: 400;
+      font-size: clamp(42px, 7vw, 84px);
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 480px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #222;
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 38px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .meta-item .label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .meta-item .value {
+      font-size: 24px;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    .hero-image {
+      margin-top: 34px;
+      aspect-ratio: 16 / 8;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    main {
+      padding: 0 34px 80px;
+    }
+
+    .section {
+      padding-top: var(--section-space);
+      scroll-margin-top: 92px;
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 34px;
+      align-items: start;
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 0.98;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+    }
+
+    .section-intro {
+      max-width: 680px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: #222;
+      margin: 0;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .content {
+      max-width: var(--content);
+    }
+
+    .content h3 {
+      margin: 0 0 14px;
+      font-size: 22px;
+      line-height: 1.15;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .content p {
+      margin: 0 0 18px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #171717;
+    }
+
+    .block {
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .aside {
+      position: sticky;
+      top: 96px;
+      align-self: start;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .aside-card {
+      margin-bottom: 28px;
+    }
+
+    .aside-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .aside-text {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #222;
+    }
+
+    .quote {
+      font-size: 22px;
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin: 26px 0;
+    }
+
+    .timeline {
+      border-top: 1px solid var(--line);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 26px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-year {
+      font-size: 26px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .timeline-text {
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .sales-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .sale {
+      display: grid;
+      grid-template-columns: 110px 1fr 160px;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .sale-year {
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .sale-title {
+      font-size: 22px;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .sale-desc {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #222;
+    }
+
+    .sale-price {
+      font-size: 24px;
+      line-height: 1.1;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      padding: 40px 34px 60px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .section-header,
+      .content-grid,
+      .sale,
+      .timeline-item,
+      .meta-row {
+        grid-template-columns: 1fr;
+      }
+
+      .aside {
+        position: static;
+      }
+
+      .sale-price {
+        text-align: left;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        margin: 0;
+      }
+
+      .hero,
+      main,
+      .footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .topbar-inner {
+        padding: 14px 20px;
+      }
+
+      .section {
+        padding-top: 88px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">Snow Maiden / Alexandra Shchekatikhina-Pototskaya</div>
+        <nav class="nav">
+          <a href="#sculpture">Скульптура</a>
+          <a href="#biography">Биография</a>
+          <a href="#sales">Продажи</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="rule"></div>
+
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Авторская работа / Государственный фарфоровый завод / 1923</div>
+          <h1>Снегурочка</h1>
+        </div>
+
+        <p class="lead">
+          Одностраничный сайт о скульптуре Александры Васильевны Щекатихиной-Потоцкой:
+          атрибуция, клейма, датировка, визуальный анализ, художественный контекст,
+          биография художницы и знаковые продажи.
+        </p>
+      </div>
+
+      <div class="hero-image">
+        <img src="images/hero.jpg" alt="Главная фотография скульптуры Снегурочка">
+      </div>
+
+      <div class="meta-row">
+        <div class="meta-item">
+          <div class="label">Объект</div>
+          <div class="value">Скульптура «Снегурочка»</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Автор</div>
+          <div class="value">А. В. Щекатихина-Потоцкая</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Дата</div>
+          <div class="value">1923 / ГФЗ</div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section id="sculpture" class="section">
+        <div class="section-header">
+          <h2 class="section-title">О скульптуре</h2>
+          <p class="section-intro">
+            Авторская версия скульптуры «Снегурочка» рассматривается как аутентичный
+            и исключительный экземпляр, что в тексте обосновывается клеймами, датировкой,
+            экспертным мнением, визуальным сравнением и художественным анализом. :contentReference[oaicite:3]{index=3}
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <div class="content">
+            <div class="block">
+              <h3>Общая атрибуция</h3>
+              <p>
+                Скульптура «Снегурочка» определена как авторская работа Александры
+                Васильевны Щекатихиной-Потоцкой, выполненная на Государственном
+                фарфоровом заводе в 1923 году. В исходном материале особый акцент
+                сделан на аутентичности и исключительности экземпляра. :contentReference[oaicite:4]{index=4}
+              </p>
+            </div>
+
+            <div class="block">
+              <h3>Клейма</h3>
+              <p>
+                На скульптуре отмечены несколько значимых маркировок. Подглазурное
+                клеймо представляет собой серп, молот и часть шестерни; такие знаки
+                ставились в начале 1920-х годов. Надглазурное клеймо — выполненная
+                от руки монограмма КНП с серпом, молотом, частью шестерни, цифрой 5
+                и датами 1918–1923. Указано, что эта юбилейная марка была создана
+                С. В. Чехониным и использовалась с марта 1923 года в честь пятилетия
+                передачи ГФЗ в ведение Наркомпроса. Также упомянуто клеймо ИК в тесте,
+                интерпретируемое как подпись формовщика завода Кузнецова И. Д. :contentReference[oaicite:5]{index=5}
+              </p>
+            </div>
+
+            <div class="block">
+              <h3>Время создания и росписи</h3>
+              <p>
+                Согласно экспертному заключению Татьяны Васильевны Кумзеровой,
+                время росписи данного экземпляра Александрой Щекатихиной-Потоцкой
+                соответствует 1923 году. В тексте также упоминается выставка
+                Государственного Эрмитажа 2017 года «Голос времени» из серии
+                «Поднесение к Рождеству. Советский фарфор. Искусство и пропаганда»,
+                где Кумзерова названа главным куратором. :contentReference[oaicite:6]{index=6}
+              </p>
+              <p>
+                Отдельно подчеркивается, что именно в этот период художница находилась
+                в Египте. По опубликованным исследованиям и архивным свидетельствам,
+                в 1923 году она не прекращала сотрудничество с ГФЗ и продолжала работать
+                с фарфором уже в Египте. Указывается и наличие муфельной печи, что делало
+                возможным самостоятельный обжиг после росписи. :contentReference[oaicite:7]{index=7}
+              </p>
+            </div>
+
+            <div class="block">
+              <h3>Египетский контекст</h3>
+              <p>
+                В материале упоминается архивная фотография 1923 года, сделанная в Каире:
+                на ней Александра Щекатихина-Потоцкая запечатлена с Иваном Билибиным
+                и сыном от первого брака. На заднем плане виден стеллаж с фарфоровыми
+                предметами; автор исходного текста отмечает, что в левом верхнем углу
+                можно различить силуэт снегурочки. При этом он осторожно подчеркивает,
+                что не утверждает, будто это именно данный экземпляр, однако считает
+                практически непреложным фактом то, что художница действительно расписывала
+                «Снегурочку» в Египте. :contentReference[oaicite:8]{index=8}
+              </p>
+            </div>
+
+            <div class="block">
+              <h3>Визуальные отличия</h3>
+              <p>
+                Отдельный раздел посвящен сравнению этого экземпляра с другими известными
+                снегурочками Щекатихиной, подтвержденными экспертами и находящимися,
+                в частности, в коллекциях Государственного Эрмитажа и музея-усадьбы Кусково.
+                Подчеркивается, что верхняя часть меховой шапки здесь расписана ярко и четко,
+                что нехарактерно для других опубликованных и атрибутированных версий. :contentReference[oaicite:9]{index=9}
+              </p>
+              <p>
+                В тексте также высказывается предположение о возможном влиянии Ивана
+                Билибина. Шуба, или тулуп, украшена по краям орнаментом, который повторяет
+                декор снегурочки на блюде из сервиза на ту же тему, но не встречается
+                на других скульптурных экземплярах. :contentReference[oaicite:10]{index=10}
+              </p>
+              <p>
+                Особо выделен кушак — важная деталь старообрядческого костюма, имевшая
+                сакральное значение в традиции и культуре староверов. В исходном материале
+                утверждается, что эта деталь не встречается ни у одной из известных
+                опубликованных скульптурных версий «Снегурочки». :contentReference[oaicite:11]{index=11}
+              </p>
+            </div>
+
+            <div class="block">
+              <h3>Автограф художницы</h3>
+              <p>
+                На экземпляре, согласно тексту, присутствует авторская подпись, встроенная
+                в продолжение росписи. Отмечается, что автограф был обнаружен специалистами
+                Государственного Эрмитажа и лично Т. В. Кумзеровой. Манера написания
+                подписи сопоставляется со стилистикой тарелок с арабскими символами
+                египетского периода творчества Щекатихиной. :contentReference[oaicite:12]{index=12}
+              </p>
+            </div>
+
+            <div class="block">
+              <h3>Стиль скульптуры</h3>
+              <p>
+                В материале скульптура трактуется как яркий образец авангарда. Эта мысль
+                раскрывается через сопоставление с другими образами снегурочки, созданными
+                в разные эпохи и в разных стилях. В качестве отправной точки приведена
+                картина Виктора Васнецова «Снегурочка» 1899 года, где образ решен
+                в романтически-символическом ключе — как молодая девушка в сказочном
+                зимнем наряде, стоящая на опушке леса. :contentReference[oaicite:13]{index=13}
+              </p>
+              <p>
+                В интерпретации Щекатихиной, напротив, речь идет скорее о собирательном
+                образе настроения. Форма ее «Снегурочки» напоминает раскрашенную фигурку
+                глиняной игрушки, связанную с традиционными народными промыслами и
+                авангардным восприятием своего времени. Далее текст сопоставляет этот
+                образ со снегурочкой ЛФЗ 1950-х годов в прочтении С. Б. Велиховой,
+                где персонаж становится уже более буквальным и соответствует эстетике
+                социалистического реализма. :contentReference[oaicite:14]{index=14}
+              </p>
+            </div>
+
+            <div class="quote">
+              «Без сомнения, одной из самых ярких в созвездии талантливых художников,
+              работавших в то время в фарфоре, была А. В. Щекатихина-Потоцкая…»
+            </div>
+
+            <div class="block">
+              <h3>Цитаты из опубликованных источников</h3>
+              <p>
+                В материале приведены выдержки из исследовательских публикаций.
+                В одном случае подчеркивается влияние графики Ивана Билибина и
+                египетского искусства на стройность композиции и чистоту линий
+                в росписи фарфора Щекатихиной. :contentReference[oaicite:15]{index=15}
+              </p>
+              <p>
+                Во второй цитате, из книги Тамары Кудрявцевой «Вокруг квадрата.
+                Авангардный фарфор революционной России», художница названа одной
+                из самых ярких фигур в фарфоре своего времени. Подчеркиваются ее
+                свобода, раскрепощенность, артистизм, связь с русской иконой, лубком
+                и народным искусством, а также неповторимая манера письма и работы
+                с золотом. :contentReference[oaicite:16]{index=16}
+              </p>
+            </div>
+
+            <div class="block">
+              <h3>Выводы</h3>
+              <p>
+                В заключении говорится, что авторская версия скульптуры, находящаяся
+                в нынешнем владении, более двенадцати лет не копировалась ни самой
+                Щекатихиной, ни другими художниками ГФЗ, а позднее ЛФЗ. Также отмечено,
+                что в 2022 году ИФЗ возобновил лимитированное производство «Снегурочки»,
+                копируя музейную версию 1922 года, с ценой около 1–1,3 тысячи евро
+                в фирменных точках продаж. :contentReference[oaicite:17]{index=17}
+              </p>
+              <p>
+                Рыночную оценку именно этого экземпляра автор считает затруднительной
+                из-за нехватки подтвержденных сравнительных продаж. При этом делается
+                вывод о заметном инвестиционном потенциале и высокой вероятности
+                интереса к работе как со стороны коллекционеров и арт-дилеров,
+                так и со стороны крупных музеев. :contentReference[oaicite:18]{index=18}
+              </p>
+            </div>
+
+            <div class="block">
+              <h3>Аббревиатуры</h3>
+              <p>
+                ГФЗ — Государственный фарфоровый завод (1918–1924).<br>
+                ЛФЗ — Ленинградский фарфоровый завод (1924–2005).<br>
+                ИФЗ — Императорский фарфоровый завод (1765–1918; с 2005 года вновь это название).
+              </p>
+              <p>
+                В тексте уточняется, что это разные исторические названия одного
+                и того же предприятия. :contentReference[oaicite:19]{index=19}
+              </p>
+            </div>
+          </div>
+
+          <aside class="aside">
+            <div class="aside-card">
+              <div class="aside-label">Здесь можно вставить</div>
+              <div class="aside-text">Фото клейма, фото общего вида скульптуры, фрагмент росписи, архивное фото, блюдо из сервиза.</div>
+            </div>
+
+            <div class="aside-card">
+              <div class="aside-label">Смысловой акцент</div>
+              <div class="aside-text">Авторская роспись, редкие визуальные признаки, египетский период и связь с авангардом.</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="biography" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Биография художницы</h2>
+          <p class="section-intro">
+            Биографический раздел в PDF охватывает путь Александры Щекатихиной-Потоцкой
+            от раннего обучения и театральной работы до египетского периода, Парижа,
+            возвращения в Ленинград и поздних лет. :contentReference[oaicite:20]{index=20}
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <div class="content">
+            <div class="block">
+              <h3>Краткая биография</h3>
+              <p>
+                Александра Васильевна Щекатихина-Потоцкая родилась в 1882 году
+                в Александровске Екатеринославской губернии Российской империи,
+                на территории современного Запорожья. В исходном тексте она названа
+                одной из легенд русского фарфора. Ее семья была связана с традицией:
+                дед занимался иконописью и книжной миниатюрой, расписывал пасхальные яйца,
+                а бабушка по материнской линии славилась искусной вышивкой. :contentReference[oaicite:21]{index=21}
+              </p>
+            </div>
+
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-year">1882</div>
+                <div class="timeline-text">
+                  Рождение Александры Васильевны Щекатихиной-Потоцкой
+                  в Александровске Екатеринославской губернии. :contentReference[oaicite:22]{index=22}
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">1908</div>
+                <div class="timeline-text">
+                  После окончания гимназии переезжает в Петербург и поступает
+                  в Рисовальную школу Общества поощрения художеств. Среди ее учителей —
+                  Н. К. Рерих, И. Я. Билибин, Я. Ф. Ционглинский и В. А. Щуко. :contentReference[oaicite:23]{index=23}
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">1910–1911</div>
+                <div class="timeline-text">
+                  Получает малую серебряную медаль в 1910 году и большую — в 1911-м.
+                  В 1910 году отправляется на Русский Север для знакомства с памятниками
+                  старинного зодчества и народным крестьянским искусством. :contentReference[oaicite:24]{index=24}
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">1912–1913</div>
+                <div class="timeline-text">
+                  Работает в театральной среде и участвует в оформлении «Русских балетов»
+                  Сергея Дягилева. Создает эскиз костюма лебедя для Анны Павловой,
+                  расписывает церковь в Талашкине под руководством Н. Рериха,
+                  оформляет постановки Петербургского Старинного театра и разрабатывает
+                  эскизы костюмов к «Весне священной» и «Князю Игорю». В 1912 году
+                  выполняет эскизы костюмов к пьесе «Снегурочка», к которым позднее
+                  будет возвращаться уже в фарфоре. :contentReference[oaicite:25]{index=25}
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">1915–1920</div>
+                <div class="timeline-text">
+                  В 1915 году выходит замуж за юриста Николая Филипповича Потоцкого,
+                  в 1916 году рождает сына Мстислава. В 1918 году по приглашению
+                  Сергея Чехонина начинает работать на Государственном фарфоровом заводе.
+                  В 1920 году теряет первого мужа. :contentReference[oaicite:26]{index=26}
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">1923</div>
+                <div class="timeline-text">
+                  Командируется заводом в Берлин, однако вместо этого уезжает в Каир.
+                  В феврале 1923 года выходит замуж за Ивана Билибина. С этого времени
+                  и до 1936 года считается находящейся в длительной заграничной командировке. :contentReference[oaicite:27]{index=27}
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">1925–1936</div>
+                <div class="timeline-text">
+                  Семья переезжает в Париж. Щекатихина продолжает сотрудничать с ГФЗ,
+                  оформляет театральные постановки и создает росписи для севрского
+                  и лиможского фарфора. После успешной персональной выставки в галерее
+                  Друэ получает заказ от барона Эдмона де Ротшильда на сервиз
+                  на морскую тему. На гонорар семья приобретает дом на юге Франции,
+                  в Ла Фавьере. :contentReference[oaicite:28]{index=28}
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">1936</div>
+                <div class="timeline-text">
+                  Возвращается в Советскую Россию, в Ленинград, и вновь работает
+                  на фарфоровом заводе, который к этому времени уже называется ЛФЗ. :contentReference[oaicite:29]{index=29}
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">1942</div>
+                <div class="timeline-text">
+                  В блокадном Ленинграде погибает ее муж Иван Билибин.
+                  Саму Щекатихину и сына эвакуируют, что сохраняет им жизнь. :contentReference[oaicite:30]{index=30}
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">1953–1967</div>
+                <div class="timeline-text">
+                  В 1953 году выходит на пенсию. Из-за состояния здоровья уже не может
+                  полноценно работать, но продолжает участвовать в выставках почти
+                  до самой смерти в 1967 году. :contentReference[oaicite:31]{index=31}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="aside">
+            <div class="aside-card">
+              <div class="aside-label">Здесь можно вставить</div>
+              <div class="aside-text">Портрет художницы, архивные фото, фото с Билибиным, документы, афиши, фарфор египетского периода.</div>
+            </div>
+
+            <div class="aside-card">
+              <div class="aside-label">Акцент</div>
+              <div class="aside-text">Связь с театром, Билибиным, Парижем, Египтом и русским авангардом.</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="sales" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Знаковые продажи</h2>
+          <p class="section-intro">
+            В файле собран список аукционных результатов, который подчеркивает интерес
+            рынка к работам, связанным с именем Александры Щекатихиной-Потоцкой. :contentReference[oaicite:32]{index=32}
+          </p>
+        </div>
+
+        <div class="sales-list">
+          <div class="sale">
+            <div class="sale-year">2019</div>
+            <div>
+              <div class="sale-title">Тарелка «Русалки»</div>
+              <div class="sale-desc">
+                Аукционный дом Christie's. Эстимейт: 20 000–30 000 фунтов.
+              </div>
+            </div>
+            <div class="sale-price">87 500 £</div>
+          </div>
+
+          <div class="sale">
+            <div class="sale-year">2019</div>
+            <div>
+              <div class="sale-title">Тарелка «Книги, Гос. Изд.»</div>
+              <div class="sale-desc">
+                Аукционный дом Bukowskis. Эстимейт: 8 000–10 000 евро.
+              </div>
+            </div>
+            <div class="sale-price">72 000 €</div>
+          </div>
+
+          <div class="sale">
+            <div class="sale-year">2020</div>
+            <div>
+              <div class="sale-title">Чашка «Красный лик»</div>
+              <div class="sale-desc">
+                Аукционный дом Auktionsverk. Эстимейт: 4 000–5 000 евро.
+              </div>
+            </div>
+            <div class="sale-price">17 000 €</div>
+          </div>
+
+          <div class="sale">
+            <div class="sale-year">2020</div>
+            <div>
+              <div class="sale-title">Чашка с блюдцем «Красный лик»</div>
+              <div class="sale-desc">
+                Аукционный дом Sotheby's. Эстимейт: 7 000–9 000 фунтов.
+              </div>
+            </div>
+            <div class="sale-price">30 000 £</div>
+          </div>
+
+          <div class="sale">
+            <div class="sale-year">2015</div>
+            <div>
+              <div class="sale-title">Тарелка «Мельница»</div>
+              <div class="sale-desc">
+                Аукционный дом Sotheby's. Эстимейт: 3 000–5 000 фунтов.
+              </div>
+            </div>
+            <div class="sale-price">57 600 £</div>
+          </div>
+
+          <div class="sale">
+            <div class="sale-year">2018</div>
+            <div>
+              <div class="sale-title">Тарелка «Гармонист»</div>
+              <div class="sale-desc">
+                Аукционный дом Christie's. Эстимейт: 20 000–30 000 фунтов.
+              </div>
+            </div>
+            <div class="sale-price">150 000 £</div>
+          </div>
+
+          <div class="sale">
+            <div class="sale-year">2023</div>
+            <div>
+              <div class="sale-title">Тарелка «Прогулка матроса»</div>
+              <div class="sale-desc">
+                Аукционный дом Fine Art METZ Heidelberg. Эстимейт: 5 000 евро.
+              </div>
+            </div>
+            <div class="sale-price">55 000 €</div>
+          </div>
+        </div>
+
+        <div class="block" style="max-width: 760px;">
+          <p>
+            Этот блок можно усилить фотографиями лотов, скриншотами каталогов,
+            логотипами аукционных домов или отдельной галереей с карточками продаж. :contentReference[oaicite:33]{index=33}
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      Текстовая структура подготовлена на основе загруженного PDF. Фотографии можно
+      вставить позже, заменив пути вида images/hero.jpg на свои файлы. Для GitHub Pages
+      сохрани этот код как index.html в ветке main.
+    </footer>
+  </div>
+</body>
+</html>
