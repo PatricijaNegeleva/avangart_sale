@@ -469,12 +469,12 @@ main {
   }
 
   .nav {
-    gap: 12px;
+    gap: 10px;
   }
 
   .nav a {
-    font-size: 11px;
-    letter-spacing: 0.08em;
+    font-size: 10px;
+    letter-spacing: 0.05em;
   }
 
   .logo-box {
